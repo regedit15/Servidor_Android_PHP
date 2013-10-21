@@ -1,6 +1,6 @@
 <?php include ('functions.php');
 
-/*M: propiedades: */
+/*M: propiedades: 222*/
 $nombre=$_GET['nombre'];
 $precio=$_GET['precio'];
 
