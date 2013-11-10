@@ -1,16 +1,24 @@
 <?php
 
+include ("PHPMailer/class.phpmailer.php");
+
 $host="localhost"; //replace with database hostname 
 $username="root"; //replace with database username 
 $password=""; //replace with database password 
 $db_name="clasificados"; //replace with database name
 
+
 function ejecutarConsulta($sql)
 {
-    global $host;
-    global $username;
-    global $password;
-    global $db_name;
+    // global $host;
+    // global $username;
+    // global $password;
+    // global $db_name;
+
+    $host="localhost"; //replace with database hostname 
+    $username="root"; //replace with database username 
+    $password=""; //replace with database password 
+    $db_name="clasificados"; //replace with database name
 
     $con=mysqli_connect($host, $username, $password,$db_name);
     
@@ -31,10 +39,15 @@ function ejecutarConsulta($sql)
 
 function obtenerSelect($sql)
 {
-    global $host;
-    global $username;
-    global $password;
-    global $db_name;
+    // global $host;
+    // global $username;
+    // global $password;
+    // global $db_name;
+
+    $host="localhost"; //replace with database hostname 
+    $username="root"; //replace with database username 
+    $password=""; //replace with database password 
+    $db_name="clasificados"; //replace with database name
 
     $con=mysql_connect($host, $username, $password)or die("cannot connect"); 
     mysql_select_db($db_name)or die("cannot select DB");
@@ -57,10 +70,15 @@ function obtenerSelect($sql)
 
 function obtenerUnSelect($sql, $columna)
 {
-    global $host;
-    global $username;
-    global $password;
-    global $db_name;
+    // global $host;
+    // global $username;
+    // global $password;
+    // global $db_name;
+
+    $host="localhost"; //replace with database hostname 
+    $username="root"; //replace with database username 
+    $password=""; //replace with database password 
+    $db_name="clasificados"; //replace with database name
 
     $con=mysql_connect($host, $username, $password)or die("cannot connect"); 
     mysql_select_db($db_name)or die("cannot select DB");
@@ -103,8 +121,6 @@ function enviarCorreo($destinatario, $asunto, $cuerpo)
     $mail->AddAddress($destinatario); 
     $mail->IsHTML(TRUE);
      
-    // $mail->Body = "<a href=http://localhost/prueba/Clasificados_EnviarCorreo.php>Para activar su cuenta haga click aqui</a>";
-
     $mail->Body = $cuerpo;
      
     if(!$mail->Send()) {
@@ -119,5 +135,7 @@ function enviarCorreo($destinatario, $asunto, $cuerpo)
 // ejecutarConsulta("UPDATE clasificados.usuario SET activado = 1 WHERE usuario = 'martincho'");
 // localhost/prueba/Clasificados_ActivarUsuario.php?usuario=martincho&md5=8dbdb87ef36d88d6c71e8fe0b0b648b3
 
+
+//  ejecutarConsulta("INSERT INTO  clasificados.usuario (`usuario`, `password`, `correo`, `md5`) VALUES ('aaa', 'aaa', 'aaa', 'aaa');");
 
 ?>
