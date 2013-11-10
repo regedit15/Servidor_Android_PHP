@@ -99,6 +99,69 @@ function obtenerUnSelect($sql, $columna)
     mysql_close($con);
 }
 
+
+function validarUsuario($usuario, $contraseña)
+{
+    // global $host;
+    // global $username;
+    // global $password;
+    // global $db_name;
+
+    $host="localhost"; //replace with database hostname 
+    $username="root"; //replace with database username 
+    $password=""; //replace with database password 
+    $db_name="clasificados"; //replace with database name
+
+    $con=mysql_connect($host, $username, $password)or die("cannot connect"); 
+    mysql_select_db($db_name)or die("cannot select DB");
+
+    $result = mysql_query("SELECT id FROM clasificados.usuario WHERE usuario = '$usuario' AND password = '$contraseña' AND activado = 1");
+    $json = array();
+     
+    if(mysql_num_rows($result))
+    {
+        $json['lista'][]="1";
+    }
+    else
+    {
+        $json['lista'][]="0";
+    }
+
+    mysql_close($con);
+    echo json_encode($json); 
+}
+
+function validarNombreUsuario($usuario)
+{
+    // global $host;
+    // global $username;
+    // global $password;
+    // global $db_name;
+
+    $host="localhost"; //replace with database hostname 
+    $username="root"; //replace with database username 
+    $password=""; //replace with database password 
+    $db_name="clasificados"; //replace with database name
+
+    $con=mysql_connect($host, $username, $password)or die("cannot connect"); 
+    mysql_select_db($db_name)or die("cannot select DB");
+
+    $result = mysql_query("SELECT id FROM clasificados.usuario where usuario = '$usuario'");
+    $json = array();
+     
+    if(mysql_num_rows($result))
+    {
+        $json['lista'][]="1";
+    }
+    else
+    {
+        $json['lista'][]="0";
+    }
+
+    mysql_close($con);
+    echo json_encode($json); 
+}
+
 function enviarCorreo($destinatario, $asunto, $cuerpo)
 {
     $mail = new PHPMailer();

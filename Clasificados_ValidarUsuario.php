@@ -3,7 +3,8 @@
 	include ('Clasificados_FuncionesSQL.php');
 
 	$usuario=$_GET['usuario'];
+	$password=$_GET['password'];
 
-	validarNombreUsuario($usuario);
+	validarUsuario($usuario,$password);
 ?>
 
