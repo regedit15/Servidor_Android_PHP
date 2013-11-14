@@ -2,9 +2,9 @@
 
 	include ('Clasificados_FuncionesSQL.php');
 
-	$id=$_GET['id'];
+	$usuario=$_GET['usuario'];
 
-   obtenerSelect("SELECT usuario FROM  clasificados.usuario where id='$id'"); 
+   obtenerSelect("SELECT id, usuario, password FROM  clasificados.usuario where usuario='$usuario'"); 
 
 ?>
 

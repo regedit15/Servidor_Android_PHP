@@ -36,6 +36,36 @@ function ejecutarConsulta($sql)
     mysqli_close($con);
 }
 
+function insertReturnId($sql)
+{
+    // global $host;
+    // global $username;
+    // global $password;
+    // global $db_name;
+
+    $host="localhost"; //replace with database hostname 
+    $username="root"; //replace with database username 
+    $password=""; //replace with database password 
+    $db_name="clasificados"; //replace with database name
+
+    $con = mysql_connect($host, $username, $password);
+    if (!$con)
+    {
+    die('Could not connect: ' . mysql_error());
+    }
+
+    $db_selected = mysql_select_db($db_name, $con);
+
+    $result = mysql_query($sql,$con);
+
+    $json = array();
+    $json['lista'][] = strval(mysql_insert_id());
+    echo json_encode($json); 
+
+    mysql_close($con); 
+}
+
+// insertReturnId("");
 
 function obtenerSelect($sql)
 {
@@ -186,11 +216,12 @@ function enviarCorreo($destinatario, $asunto, $cuerpo)
      
     $mail->Body = $cuerpo;
      
-    if(!$mail->Send()) {
-        echo "Error: " . $mail->ErrorInfo;
-    } else {
-        echo "Mensaje enviado";
-    }
+
+    $mail->Send();
+    // if(!$mail->Send()) 
+    // {
+    //     echo "Error: " . $mail->ErrorInfo;
+    // }
 }
 
 // pruebas
@@ -200,5 +231,8 @@ function enviarCorreo($destinatario, $asunto, $cuerpo)
 
 
 //  ejecutarConsulta("INSERT INTO  clasificados.usuario (`usuario`, `password`, `correo`, `md5`) VALUES ('aaa', 'aaa', 'aaa', 'aaa');");
+
+
+
 
 ?>
