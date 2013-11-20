@@ -1,7 +1,8 @@
 <?php 
 
 	include ('Clasificados_FuncionesSQL.php');
-
+	abrirConexion();
+	
 	$id_clasificado=$_GET['id_clasificado'];
 	$nombre=$_GET['nombre'];
 

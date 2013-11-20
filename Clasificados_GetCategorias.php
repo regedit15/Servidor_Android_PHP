@@ -1,8 +1,8 @@
 <?php
 
 	include ('Clasificados_FuncionesSQL.php');
+	abrirConexion();
 
-   obtenerSelect("SELECT * FROM  clasificados.categoria"); 
-
+    obtenerSelect("SELECT * FROM  clasificados.categoria"); 
 ?>
 
